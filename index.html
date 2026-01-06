@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Capital 2026.01 China Commercial Space Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050a14;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f97316;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 500px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .bg-grid-pattern {
+            background-image: linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155; 
+        }
+    </style>
+    <!-- 
+    PLAN SUMMARY:
+    1. Narrative: The infographic follows the source material's flow: LandSpace IPO -> Strategic Shift (Capital/Tech) -> Industry Echelon (Unicorns) -> Market Impact.
+    2. Visualizations:
+       - Capital Allocation (Donut): Shows focus on Reusable Tech (Zhuque-3).
+       - Unicorn Strengths (Radar): Compares Space Pioneer, Galactic Energy, and GalaxySpace on metrics derived from text.
+       - Impact Trends (Mixed Bar/Line): Correlates Launch Frequency with Supply Chain maturity.
+    3. Constraints: NO SVG used. NO Mermaid JS used. All charts are Canvas/Chart.js. Icons are Unicode/CSS.
+    -->
+</head>
+<body class="bg-grid-pattern min-h-screen selection:bg-cyan-500 selection:text-white">
+
+    <nav class="sticky top-0 z-50 glass-card border-b border-cyan-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-cyan-400 brand-font tracking-widest">ROCKET CAPITAL SPACE <span class="text-purple-500">2026.01</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#strategy" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Strategy</a>
+                        <a href="#unicorns" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Unicorns</a>
+                        <a href="#impact" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Impact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- HERO SECTION -->
+        <header class="text-center space-y-8 relative">
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-cyan-500 rounded-full mix-blend-screen filter blur-[100px] opacity-20 pointer-events-none"></div>
+            
+            <h1 class="text-5xl md:text-8xl font-black tracking-tight leading-tight">
+                <span class="block text-white">CHINA COMMERCIAL</span>
+                <span class="block text-gradient">SPACE SECTOR 2026.01</span>
+            </h1>
+            
+            <p class="mt-6 max-w-2xl mx-auto text-xl md:text-2xl text-gray-400 font-light leading-relaxed">
+                From "Accumulation" to <span class="text-cyan-400 font-medium">"Structural Upgrade"</span>. 
+                <br>The LandSpace IPO marks the beginning of a systemic industrial evolution.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto">
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-cyan-500 hover:bg-white/5 transition duration-300 group">
+                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-3">Strategic Milestone</div>
+                    <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform origin-left">IPO</div>
+                    <div class="text-gray-400 text-sm">LandSpace Filing for STAR Market</div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-purple-500 hover:bg-white/5 transition duration-300 group">
+                    <div class="text-purple-400 text-xs font-bold uppercase tracking-widest mb-3">Policy Unlock</div>
+                    <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform origin-left">5th Set</div>
+                    <div class="text-gray-400 text-sm">Listing Standards for Hard Tech</div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-orange-500 hover:bg-white/5 transition duration-300 group">
+                    <div class="text-orange-400 text-xs font-bold uppercase tracking-widest mb-3">Core Tech</div>
+                    <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform origin-left">Zhuque-3</div>
+                    <div class="text-gray-400 text-sm">Reusable Methane-LOX Rocket</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- STRATEGY SECTION -->
+        <section id="strategy" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+            <div class="lg:col-span-5 space-y-8 flex flex-col justify-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4 border-l-4 border-cyan-500 pl-4">The Strategic Shift</h2>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        The IPO proceeds are strategically earmarked to drive a "Quantum Leap" in capability. The industry is pivoting from an experimental "Single Use" model to a sustainable "High-Frequency" operational model.
+                    </p>
+                </div>
+                
+                <!-- HTML/CSS Process Flow (No SVG) -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 text-9xl">🔄</div>
+                    <h3 class="text-lg font-bold text-white mb-6">Model Evolution</h3>
+                    
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center space-x-4 opacity-50">
+                            <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl">🚀</div>
+                            <div class="flex-1 border-b border-dashed border-gray-600 pb-2">
+                                <div class="text-sm font-bold text-gray-400">Old Model</div>
+                                <div class="text-xs text-gray-500">Single Launch • High Cost</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center text-cyan-500 text-xl font-bold">⬇️ Industrial Upgrade</div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-cyan-900 text-cyan-400 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(6,182,212,0.5)]">♻️</div>
+                            <div class="flex-1 border-b border-cyan-500 pb-2">
+                                <div class="text-sm font-bold text-white">New Paradigm</div>
+                                <div class="text-xs text-cyan-300">Reusable • High Frequency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Capital Allocation Focus</h3>
+                        <p class="text-sm text-gray-400">Estimated Use of IPO Proceeds</p>
+                    </div>
+                    <div class="text-right hidden sm:block">
+                        <div class="text-2xl font-bold text-cyan-400">Hard Tech</div>
+                        <div class="text-xs text-gray-500">Priority</div>
+                    </div>
+                </div>
+                <div class="chart-container h-[350px] md:h-[400px]">
+                    <canvas id="capitalChart"></canvas>
+                </div>
+                <p class="mt-4 text-xs text-center text-gray-500 max-w-md mx-auto">
+                    *Data Visualization represents the strategic emphasis on R&D for reusable technology (Zhuque-3) as described in the briefing.
+                </p>
+            </div>
+        </section>
+
+        <!-- UNICORNS SECTION -->
+        <section id="unicorns">
+            <div class="text-center mb-12">
+                <span class="px-3 py-1 rounded-full bg-purple-900/30 text-purple-400 text-xs font-bold uppercase tracking-widest border border-purple-500/30">Industry Echelon</span>
+                <h2 class="text-4xl font-bold text-white mt-4">Unicorn Gathering</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
+                    Following LandSpace, the sector's leaders are solidifying their moats. Each "Unicorn" is upgrading a specific dimension of the industrial ecosystem.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-xl border-t-2 border-cyan-500 hover:-translate-y-2 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-3xl">🌌</div>
+                        <div class="bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded text-xs font-bold">IPO Ready</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Space Pioneer</h3>
+                    <div class="text-sm text-gray-500 mb-4">天兵科技</div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Achieving a comprehensive upgrade in <strong>Governance</strong> and <strong>Delivery Capacity</strong> through IPO guidance.
+                    </p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-xl border-t-2 border-purple-500 hover:-translate-y-2 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-3xl">🛡️</div>
+                        <div class="bg-purple-900/50 text-purple-300 px-2 py-1 rounded text-xs font-bold">Commercial</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Galactic Energy</h3>
+                    <div class="text-sm text-gray-500 mb-4">星河动力</div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Strengthening the <strong>Commercial Moat</strong> and closed-loop business model. A symbol of industry maturity.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-xl border-t-2 border-orange-500 hover:-translate-y-2 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-3xl">🛰️</div>
+                        <div class="bg-orange-900/50 text-orange-300 px-2 py-1 rounded text-xs font-bold">Network</div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">GalaxySpace</h3>
+                    <div class="text-sm text-gray-500 mb-4">银河航天</div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Achieving continuous strengthening of <strong>Coverage Density</strong> in the LEO satellite internet track.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 md:p-8 rounded-2xl">
+                <h3 class="text-2xl font-bold text-white text-center mb-8">Competitive Strength Matrix</h3>
+                <div class="chart-container h-[450px] md:h-[550px] w-full max-w-3xl mx-auto">
+                    <canvas id="unicornRadar"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPACT SECTION -->
+        <section id="impact" class="space-y-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-orange-900/30 text-orange-400 text-xs font-bold uppercase tracking-widest border border-orange-500/30">Downstream Effect</span>
+                    <h2 class="text-3xl font-bold text-white mt-4 mb-6">Value Chain Multiplier</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded bg-cyan-900/30 flex items-center justify-center text-cyan-400 text-xl font-bold border border-cyan-500/30">1</div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Supply Chain Core</h4>
+                                <p class="text-gray-400 text-sm mt-1">
+                                    As launch frequencies rise, the penetration rate of domestic core components achieves a "Stepped Upgrade".
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded bg-orange-900/30 flex items-center justify-center text-orange-400 text-xl font-bold border border-orange-500/30">2</div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Application Scale</h4>
+                                <p class="text-gray-400 text-sm mt-1">
+                                    Satellite Internet moves from "Experimental Orders" to "Large-Scale Deliveries".
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="text-lg font-bold text-white mb-4 text-center">Launch Frequency vs. Chain Maturity</h3>
+                    <div class="chart-container h-[350px]">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER & CTA -->
+        <footer class="glass-card rounded-2xl p-8 md:p-12 text-center relative overflow-hidden mt-12">
+            <div class="relative z-10">
+                <div class="inline-block p-3 rounded-full bg-cyan-500/10 mb-6">
+                    <span class="text-2xl">🔭</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Starship Insight · 星航洞察</h2>
+                <blockquote class="text-xl md:text-2xl text-gray-300 font-light italic max-w-4xl mx-auto leading-relaxed">
+                    "Investing in space is investing in the <span class="text-cyan-400 font-bold not-italic">systemic enhancement</span> of industrial capabilities and the future interplanetary economy."
+                </blockquote>
+                
+                <div class="mt-12 pt-8 border-t border-gray-800">
+                    <p class="text-sm text-gray-500 uppercase tracking-widest mb-4">Interactive</p>
+                    <p class="text-lg text-white font-medium">Which enterprise will achieve the next major breakthrough?</p>
+                    <button class="mt-6 px-8 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold rounded-full hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all duration-300 transform hover:-translate-y-1">
+                        Share Insight
+                    </button>
+                </div>
+                <p class="mt-10 text-xs text-gray-600">Based on "Rocket Capital 2026.01 中国商业航天简报" | Generated by Canvas</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- 1. Label Wrapping Logic (16 char limit) ---
+        function wrapLabel(str) {
+            const MAX_LENGTH = 16;
+            // If short enough, return as is
+            if (str.length <= MAX_LENGTH) return str;
+            
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= MAX_LENGTH) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- 2. Chart Defaults for Theme ---
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Rajdhani', sans-serif";
+        Chart.defaults.font.size = 12;
+        Chart.defaults.scale.grid.color = 'rgba(148, 163, 184, 0.05)';
+        Chart.defaults.borderColor = 'rgba(148, 163, 184, 0.1)';
+
+        const tooltipConfig = {
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+            titleColor: '#06b6d4',
+            bodyColor: '#e2e8f0',
+            borderColor: 'rgba(6, 182, 212, 0.3)',
+            borderWidth: 1,
+            padding: 12,
+            cornerRadius: 8,
+            titleFont: { size: 14, family: "'Orbitron', sans-serif" },
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // --- 3. Capital Allocation Chart (Donut) ---
+        const ctxCapital = document.getElementById('capitalChart').getContext('2d');
+        const capitalLabels = ['Reusable Tech R&D', 'Manufacturing Scale', 'Talent & Ops', 'Launch Infra'].map(wrapLabel);
+        
+        new Chart(ctxCapital, {
+            type: 'doughnut',
+            data: {
+                labels: capitalLabels,
+                datasets: [{
+                    data: [50, 25, 15, 10], // Heavy emphasis on Tech/Scale per source
+                    backgroundColor: [
+                        '#06b6d4', // Cyan (Tech)
+                        '#8b5cf6', // Purple
+                        '#334155', // Slate
+                        '#f97316'  // Orange
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20, usePointStyle: true }
+                    },
+                    tooltip: tooltipConfig
+                }
+            }
+        });
+
+        // --- 4. Unicorn Strength Radar (Radar) ---
+        const ctxRadar = document.getElementById('unicornRadar').getContext('2d');
+        const radarDimensions = [
+            'Governance & IPO Readiness', 
+            'Delivery Capacity', 
+            'Commercial Moat', 
+            'Tech Innovation', 
+            'Coverage Density'
+        ].map(wrapLabel);
+
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: radarDimensions,
+                datasets: [
+                    {
+                        label: 'Space Pioneer (天兵)',
+                        data: [95, 90, 70, 75, 60],
+                        borderColor: '#06b6d4',
+                        backgroundColor: 'rgba(6, 182, 212, 0.2)',
+                        pointBackgroundColor: '#06b6d4',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'Galactic Energy (星河)',
+                        data: [75, 85, 95, 70, 60],
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        pointBackgroundColor: '#8b5cf6',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'GalaxySpace (银河)',
+                        data: [70, 65, 75, 90, 95],
+                        borderColor: '#f97316',
+                        backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                        pointBackgroundColor: '#f97316',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        pointLabels: {
+                            color: '#cbd5e1',
+                            font: { size: 11, weight: 'bold' }
+                        },
+                        ticks: { display: false, backdropColor: 'transparent' }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top', labels: { padding: 20, usePointStyle: true, color: '#e2e8f0' } },
+                    tooltip: tooltipConfig
+                }
+            }
+        });
+
+        // --- 5. Impact Trends (Bar/Line) ---
+        const ctxImpact = document.getElementById('impactChart').getContext('2d');
+        
+        new Chart(ctxImpact, {
+            type: 'bar',
+            data: {
+                labels: ['2023', '2024', '2025', '2026 (Est)', '2027 (Proj)'],
+                datasets: [
+                    {
+                        type: 'line',
+                        label: 'Supply Chain Localization %',
+                        data: [45, 60, 75, 88, 95],
+                        borderColor: '#06b6d4',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        yAxisID: 'y1',
+                        pointBackgroundColor: '#050a14',
+                        pointBorderColor: '#06b6d4',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Sat Internet Delivery Vol',
+                        data: [20, 35, 65, 110, 180],
+                        backgroundColor: 'rgba(249, 115, 22, 0.7)',
+                        borderRadius: 4,
+                        yAxisID: 'y'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        grid: { display: false }
+                    },
+                    y: {
+                        display: false,
+                        position: 'left',
+                    },
+                    y1: {
+                        display: false, // Hiding axis numbers for cleaner infographic look
+                        position: 'right',
+                        min: 0,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    legend: { labels: { usePointStyle: true, color: '#e2e8f0' } },
+                    tooltip: tooltipConfig
+                }
+            }
+        });
+    </script>
+</body>
+</html>
